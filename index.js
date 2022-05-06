@@ -19,7 +19,7 @@ async function run() {
         const NotesCollection = client.db("NoteTracker").collection("Notes");
 
         app.get("/notes", async (req, res) => {
-            const q = {}
+            const q = req.query
             const cursor = NotesCollection.find(q)
             const result = await cursor.toArray()
             res.send(result)
